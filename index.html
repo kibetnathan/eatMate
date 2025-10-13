@@ -8,9 +8,17 @@
   </head>
   <body>
     <nav
-      class="h-[85px] w-[100vw] flex flex-row outline-2 justify-center items-center"
+      class="h-[85px] w-[100vw] grid grid-cols-7 outline-2 items-center place-content-center"
     >
-      <span class="w-fit text-4xl font-light">eatMate</span>
+      <span class="w-fit text-4xl font-light col-start-4 col-end-6 text-center"
+        >eatMate</span
+      >
+      <button
+        id="optOut"
+        class="w-fit h-fit col-start-7 col-end-7 p-2 outline-2 rounded hover:cursor-pointer"
+      >
+        Opt Out
+      </button>
     </nav>
     <main class="flex flex-row flex-wrap items-center justify-center h-[80vh]">
       <div id="formCard" class="flex p-2 outline-2 w-fit m-auto rounded-3xl">
@@ -59,90 +67,63 @@
           </fieldset>
         </form>
       </div>
-      <div id="content" class="hidden flex-row flex-wrap items-center justify-center m-20">
       <div
-        id="dailyCalCard"
-        class="p-4 outline-2 w-fit m-auto rounded-2xl h-fit mx-20"
+        id="content"
+        class="hidden flex-row flex-wrap items-center justify-center m-20"
       >
-        <h3 class="m-3 text-xl">Daily Calories:</h3>
-        <div class="h-[23vh] w-[23vw] outline-2 rounded-xl overflow-auto">
-          <div
-            id="foodsCard"
-            class="grid grid-cols-4 h-16 w-auto outline-1 items-center"
-          >
-            <span id="foodName" class="col-span-3 m-1 border-r-1 border-black"
-              >default food</span
+        <div
+          id="dailyCalCard"
+          class="p-4 outline-2 w-fit m-auto rounded-2xl h-fit mx-20"
+        >
+          <h3 class="m-3 text-xl">Daily Calories:</h3>
+          <section class="grid grid-cols-4 m-5 w-auto items-center">
+            <span class="col-span-3">Food:</span
+            ><span class="col-span-1">Cals:</span>
+          </section>
+          <div id="foodsContainer" class="h-[23vh] w-200px  outline-2 rounded-xl overflow-auto">
+            <div
+              id="foodsCard"
+              class="grid grid-cols-4 h-16 w-auto outline-1 items-center"
             >
-            <span id="calories" class="col-span-1 m-1">000</span>
+              <span id="foodName" class="col-span-3 m-1 border-r-1 border-black"
+                >default food</span
+              >
+              <span id="calories" class="col-span-1 m-1">000</span>
+            </div>
           </div>
+          <h4 class="m-3 text-xl">Total Calories: <span id="totalCals">0</span></h4>
         </div>
-        <h4 class="m-3 text-xl">Total Calories:</h4>
-      </div>
-      <div
-        id="addFoodCard"
-        class="p-4 outline-2 w-fit m-auto rounded-2xl h-fit mx-20"
-      >
-        <form class="m-15" id="addFood">
-          <fieldset>
-            <legend>Add Food</legend>
-            <label for="newFood">Food Name:</label><br />
-            <input
-              class="bg-white rounded outline-1"
-              type="text"
-              id="newFood"
-              name="newFood"
-              required
-            /><br />
-            <label for="newFoodCals">Calorie count:</label><br />
-            <input
-              class="bg-white rounded outline-1"
-              type="text"
-              id="newFoodCals"
-              name="newFoodCals"
-              required
-            /><br />
-          </fieldset>
-        </form>
-      </div>
-      <div
-        id="foodSuggestionCard"
-        class="p-4 outline-2 w-[30vw] m-auto rounded-2xl h-fit mx-20 flex justify-center"
-      >
-      <div>
-        <h2 class="text-lg text-center m-2">Weekly Metrics</h2>
-        <section class="flex-wrap flex justify-center w-[27vw] h-[20vh] outline-2 rounded">
-
-        </section>
+        <div
+          id="addFoodCard"
+          class="p-4 outline-2 w-fit m-auto rounded-2xl h-fit mx-20"
+        >
+          <form class="m-13" id="addFood">
+            <fieldset>
+              <legend>Add Food</legend>
+              <label for="newFood">Food Name:</label><br />
+              <input
+                class="bg-white rounded outline-1"
+                type="text"
+                id="newFood"
+                name="newFood"
+                required
+              /><br />
+              <label for="newFoodCals">Calorie count:</label><br />
+              <input
+                class="bg-white rounded outline-1"
+                type="text"
+                id="newFoodCals"
+                name="newFoodCals"
+                required
+              /><br />
+              <input
+                class="m-3 px-3 py-1 rounded outline-1"
+                type="Submit"
+                value="Opt in"
+              />
+            </fieldset>
+          </form>
         </div>
-      </div>
-      <div
-        id="foodSuggestionCard"
-        class="p-4 outline-2 w-[30vw] m-auto rounded-2xl h-fit mx-20"
-      >
-        <h2 class="text-lg text-center">Food Suggestions</h2>
-        <section class="flex-wrap flex justify-center">
-          <button
-            id="suggestedFood"
-            class="w-[6vw] h-[6vw] outline-2 rounded-[50%] m-4"
-          ></button>
-          <button
-            id="suggestedFood"
-            class="w-[6vw] h-[6vw] outline-2 rounded-[50%] m-4"
-          ></button>
-          <button
-            id="suggestedFood"
-            class="w-[6vw] h-[6vw] outline-2 rounded-[50%] m-4"
-          ></button>
-          <button
-            id="suggestedFood"
-            class="w-[6vw] h-[6vw] outline-2 rounded-[50%] m-4"
-          ></button>
-          <button
-            id="suggestedFood"
-            class="w-[6vw] h-[6vw] outline-2 rounded-[50%] m-4"
-          ></button>
-        </section>
-      </div>
       </div>
     </main>
     <footer></footer>
