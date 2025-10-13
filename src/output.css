@@ -303,6 +303,9 @@
   .h-fit {
     height: fit-content;
   }
+  .w-400 {
+    width: calc(var(--spacing) * 400);
+  }
   .w-\[6vw\] {
     width: 6vw;
   }
@@ -317,6 +320,15 @@
   }
   .w-\[100vw\] {
     width: 100vw;
+  }
+  .w-\[375px\] {
+    width: 375px;
+  }
+  .w-\[400px\] {
+    width: 400px;
+  }
+  .w-\[3750px\] {
+    width: 3750px;
   }
   .w-auto {
     width: auto;

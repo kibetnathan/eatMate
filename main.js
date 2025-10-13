@@ -2,7 +2,7 @@ const userForm = document.getElementById('myForm');
 const content = document.getElementById('content');
 const formCard = document.getElementById('formCard');
 const optOut = document.getElementById('optOut');
-let foods = JSON.parse(localStorage.getItem("foods")) || [];
+
 
 function onSubmit(event) {
   event.preventDefault();
@@ -17,15 +17,6 @@ function onSubmit(event) {
 
 }
 
-function getAge(dob) {
-  const birthDate = new Date(dob);
-  const today = new Date();
-
-  let age = today.getFullYear() - birthDate.getFullYear();
-
-  return age;
-}
-
 userForm.addEventListener('submit', onSubmit);
 
 const savedData = JSON.parse(localStorage.getItem('userData'));
@@ -38,11 +29,14 @@ if (savedData) {
 }
 optOut.addEventListener('click', () => {
   localStorage.removeItem('userData');
+  localStorage.removeItem('foods');
   alert('Data has been cleared!');
 
   location.reload();
+
 });
 
+let foods = JSON.parse(localStorage.getItem("foods")) || [];
 const addForm = document.getElementById('addFood');
 function addFood(event) {
   event.preventDefault();
@@ -75,7 +69,7 @@ function renderFoods() {
     div.innerHTML = `
       <span class="col-span-3 m-1 border-r border-black pr-2">${foodName}</span>
       <span class="col-span-1 m-1 text-center">${calCount}</span>
-      <button class="col-span-1 bg-red-500 text-white rounded-md px-2 py-1 mx-2 hover:bg-red-600 transition" data-index="${index}">
+      <button class="col-span-1 outline-2 hover:cursor-pointer rounded-md px-2 py-1 mx-2 " data-index="${index}">
         Del
       </button>
     `;
