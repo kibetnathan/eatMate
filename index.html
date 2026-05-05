@@ -1,17 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>eatMate</title>
     <link href="./src/output.css" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="EM.png">
+    <link rel="icon" type="image/x-icon" href="EM.png" />
   </head>
   <body class="w-full box-border">
     <nav
       class="h-[85px] w-full grid lg:grid-cols-7 grid-cols-3 outline-2 items-center place-content-center"
     >
-      <span class="w-fit text-4xl font-light lg:col-start-4 lg:col-end-6 col-start-2  text-center"
+      <span
+        class="w-fit text-4xl font-light lg:col-start-4 lg:col-end-6 col-start-2 text-center"
         >eatMate</span
       >
       <button
@@ -81,7 +82,10 @@
             <span class="col-span-3">Food:</span
             ><span class="col-span-1">Cals:</span>
           </section>
-          <div id="foodsContainer" class="h-[23vh] outline-2 rounded-xl overflow-auto">
+          <div
+            id="foodsContainer"
+            class="h-[23vh] outline-2 rounded-xl overflow-auto"
+          >
             <div
               id="foodsCard"
               class="grid grid-cols-4 h-16 w-auto outline-1 items-center"
@@ -92,7 +96,9 @@
               <span id="calories" class="col-span-1 m-1">000</span>
             </div>
           </div>
-          <h4 class="m-3 text-xl">Total Calories: <span id="totalCals">0</span></h4>
+          <h4 class="m-3 text-xl">
+            Total Calories: <span id="totalCals">0</span>
+          </h4>
         </div>
         <div
           id="addFoodCard"
@@ -128,6 +134,6 @@
       </div>
     </main>
     <footer></footer>
-    <script src="main.js"></script>
+    <script src="dist/main.js"></script>
   </body>
 </html>
