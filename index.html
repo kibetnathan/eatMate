@@ -9,131 +9,141 @@
   </head>
   <body class="w-full box-border">
     <nav
-      class="h-[85px] w-full grid lg:grid-cols-7 grid-cols-3 outline-2 items-center place-content-center"
+      class="w-full flex flex-wrap items-center justify-between gap-3 px-4 sm:px-8 py-4 border-b-[3px] border-black bg-[#FFD93D]"
     >
-      <span
-        class="w-fit text-4xl font-light lg:col-start-4 lg:col-end-6 col-start-2 text-center"
-        >eatMate</span
-      >
-      <button
-        id="optOut"
-        class="w-fit h-fit lg:col-start-7 lg:col-end-7 p-2 m-2 outline-2 rounded hover:cursor-pointer"
-      >
-        Opt Out
-      </button>
-    </nav>
-    <main class="flex flex-row flex-wrap items-center justify-center">
-      <div id="formCard" class="flex p-2 outline-2 w-fit m-auto rounded-3xl">
-        <form class="m-15" id="myForm">
-          <legend class="text-3xl p-1 mb-10 text-center">Sign up</legend>
-          <fieldset>
-            <label for="fname">First name:</label><br />
-            <input
-              class="bg-white rounded outline-1"
-              type="text"
-              id="fname"
-              name="fname"
-              required
-            /><br />
-            <label for="lname">Last name:</label><br />
-            <input
-              class="bg-white rounded outline-1"
-              type="text"
-              id="lname"
-              name="lname"
-              required
-            />
-            <br />
-            <label for="uname">Username:</label><br />
-            <input
-              class="bg-white rounded outline-1"
-              type="text"
-              name="uname"
-              id="uname"
-              required
-            />
-            <br />
-            <label for="DoB">Date of Birth</label><br />
-            <input
-              class="rounded outline-1"
-              type="date"
-              name="DoB"
-              id="DoB"
-              required
-            /><br /><br />
-            <input
-              class="px-3 py-1 rounded outline-1"
-              type="Submit"
-              value="Opt in"
-            />
-          </fieldset>
-        </form>
+      <div class="flex items-center gap-3">
+        <span
+          class="inline-block w-10 h-10 border-[3px] border-black rounded-xl bg-[#FF6B6B] shadow-[4px_4px_0_0_#000]"
+          aria-hidden="true"
+        ></span>
+        <span class="text-3xl sm:text-4xl font-black tracking-tight">eatMate</span>
       </div>
+      <div class="flex items-center gap-2">
+        <span class="brut-chip hidden sm:inline-block">track your bites</span>
+        <button id="optOut" class="brut-btn brut-btn-danger">Opt Out</button>
+      </div>
+    </nav>
+
+    <main
+      class="w-full max-w-6xl mx-auto px-4 sm:px-8 py-8 sm:py-12 flex flex-col items-center"
+    >
+      <!-- Sign up card -->
       <div
-        id="content"
-        class="hidden flex-row flex-wrap items-center justify-center m-20"
+        id="formCard"
+        class="brut-card w-full max-w-md p-6 sm:p-8 flex flex-col"
       >
-        <div
-          id="dailyCalCard"
-          class="p-4 outline-2 w-[375px] rounded-2xl h-fit m-20"
-        >
-          <h3 class="m-3 text-xl">Daily Calories:</h3>
-          <section class="grid grid-cols-4 m-5 w-auto items-center">
-            <span class="col-span-3">Food:</span
-            ><span class="col-span-1">Cals:</span>
-          </section>
-          <div
-            id="foodsContainer"
-            class="h-[23vh] outline-2 rounded-xl overflow-auto"
-          >
-            <div
-              id="foodsCard"
-              class="grid grid-cols-4 h-16 w-auto outline-1 items-center"
-            >
-              <span id="foodName" class="col-span-3 m-1 border-r-1 border-black"
-                >default food</span
-              >
-              <span id="calories" class="col-span-1 m-1">000</span>
+        <header class="mb-6 text-center">
+          <h1 class="text-3xl sm:text-4xl font-black mb-2">Sign up</h1>
+          <p class="text-sm">Get started with your daily calorie log.</p>
+        </header>
+        <form id="myForm" class="flex flex-col gap-4">
+          <div class="flex flex-col sm:flex-row gap-4">
+            <div class="flex-1">
+              <label for="fname" class="block font-bold mb-1">First name</label>
+              <input class="brut-input" type="text" id="fname" name="fname" required />
+            </div>
+            <div class="flex-1">
+              <label for="lname" class="block font-bold mb-1">Last name</label>
+              <input class="brut-input" type="text" id="lname" name="lname" required />
             </div>
           </div>
-          <h4 class="m-3 text-xl">
-            Total Calories: <span id="totalCals">0</span>
-          </h4>
-        </div>
-        <div
-          id="addFoodCard"
-          class="p-4 outline-2 w-fit rounded-2xl h-fit m-20"
+          <div>
+            <label for="uname" class="block font-bold mb-1">Username</label>
+            <input class="brut-input" type="text" name="uname" id="uname" required />
+          </div>
+          <div>
+            <label for="DoB" class="block font-bold mb-1">Date of birth</label>
+            <input class="brut-input" type="date" name="DoB" id="DoB" required />
+          </div>
+          <input
+            class="brut-btn brut-btn-success mt-2 w-full text-lg"
+            type="submit"
+            value="Opt in"
+          />
+        </form>
+      </div>
+
+      <!-- App content -->
+      <div
+        id="content"
+        class="hidden w-full flex-col lg:flex-row items-stretch justify-center gap-8 lg:gap-10"
+      >
+        <!-- Daily calories card -->
+        <section
+          id="dailyCalCard"
+          class="brut-card flex-1 w-full max-w-lg p-5 sm:p-6 flex flex-col"
         >
-          <form class="m-13" id="addFood">
-            <fieldset>
-              <legend>Add Food</legend>
-              <label for="newFood">Food Name:</label><br />
+          <div class="flex items-center justify-between mb-4 gap-3 flex-wrap">
+            <h3 class="text-2xl font-black">Daily Calories</h3>
+            <span class="brut-chip">today</span>
+          </div>
+          <div
+            class="grid grid-cols-[1fr_auto_auto] gap-2 px-3 pb-2 border-b-[3px] border-black font-bold text-sm uppercase tracking-wide"
+          >
+            <span>Food</span>
+            <span class="px-2">Cals</span>
+            <span class="px-2">&nbsp;</span>
+          </div>
+          <div
+            id="foodsContainer"
+            class="mt-2 border-[3px] border-black rounded-xl bg-[#FFF8E7] overflow-y-auto h-[40vh] sm:h-[45vh]"
+          ></div>
+          <div
+            class="mt-5 flex items-center justify-between border-[3px] border-black rounded-xl bg-[#4D96FF] px-4 py-3 shadow-[4px_4px_0_0_#000]"
+          >
+            <span class="font-bold text-lg">Total</span>
+            <span class="font-black text-2xl"
+              ><span id="totalCals">0</span> cal</span
+            >
+          </div>
+        </section>
+
+        <!-- Add food card -->
+        <section
+          id="addFoodCard"
+          class="brut-card flex-1 w-full max-w-md p-5 sm:p-6 self-start"
+        >
+          <h3 class="text-2xl font-black mb-4">Add Food</h3>
+          <form id="addFood" class="flex flex-col gap-4">
+            <div>
+              <label for="newFood" class="block font-bold mb-1">Food name</label>
               <input
-                class="bg-white rounded outline-1"
+                class="brut-input"
                 type="text"
                 id="newFood"
                 name="newFood"
                 required
-              /><br />
-              <label for="newFoodCals">Calorie count:</label><br />
+              />
+            </div>
+            <div>
+              <label for="newFoodCals" class="block font-bold mb-1"
+                >Calorie count</label
+              >
               <input
-                class="bg-white rounded outline-1"
-                type="text"
+                class="brut-input"
+                type="number"
+                inputmode="numeric"
                 id="newFoodCals"
                 name="newFoodCals"
                 required
-              /><br />
-              <input
-                class="m-3 px-3 py-1 rounded outline-1"
-                type="Submit"
-                value="Add Food"
               />
-            </fieldset>
+            </div>
+            <input
+              class="brut-btn brut-btn-primary w-full text-lg mt-2"
+              type="submit"
+              value="Add Food"
+            />
           </form>
-        </div>
+        </section>
       </div>
     </main>
-    <footer></footer>
+
+    <footer
+      class="w-full text-center py-6 mt-10 border-t-[3px] border-black bg-[#6BCB77] font-bold"
+    >
+      built with thick lines &amp; warm colors
+    </footer>
+
     <script src="dist/main.js"></script>
   </body>
 </html>

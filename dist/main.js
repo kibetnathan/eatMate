@@ -57,16 +57,30 @@ function renderFoods() {
     const totalDisplay = document.getElementById("totalCals");
     container.innerHTML = "";
     let total = 0;
+    if (foods.length === 0) {
+        const empty = document.createElement("div");
+        empty.className = "p-6 text-center font-bold opacity-70";
+        empty.textContent = "No foods yet. Add one →";
+        container.appendChild(empty);
+    }
     foods.forEach(({ foodName, calCount }, index) => {
         const div = document.createElement("div");
-        div.className =
-            "grid grid-cols-5 h-16 w-auto outline outline-1 items-center rounded-xl my-1";
+        div.className = "food-row";
+        const safeName = String(foodName).replace(/[<>&"']/g, (c) => ({
+            "<": "&lt;",
+            ">": "&gt;",
+            "&": "&amp;",
+            '"': "&quot;",
+            "'": "&#39;",
+        })[c]);
         div.innerHTML = `
-      <span class="col-span-3 m-1 border-r border-black pr-2">${foodName}</span>
-      <span class="col-span-1 m-1 text-center">${calCount}</span>
-      <button class="col-span-1 outline-2 hover:cursor-pointer rounded-md px-2 py-1 mx-2 " data-index="${index}">
-        Del
-      </button>
+      <span class="font-semibold truncate pr-2">${safeName}</span>
+      <span class="brut-chip">${calCount}</span>
+      <button
+        class="brut-btn brut-btn-danger text-sm px-3 py-1"
+        data-index="${index}"
+        aria-label="Delete ${safeName}"
+      >Del</button>
     `;
         container.appendChild(div);
         total += Number(calCount);
