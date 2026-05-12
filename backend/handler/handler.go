@@ -44,6 +44,24 @@ func GetEntry(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusOK, entry)
 }
 
+// POST /entries
+// create a new entry
+func CreateEntry(w http.ResponseWriter, r *http.Request) {
+	var entry models.FoodEntry
+	if err := json.NewDecoder(r.Body).Decode(&entry); err != nil {
+		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "invalid request body"})
+		return
+	}
+
+	result := database.DB.Create(&entry)
+	if result.Error != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": result.Error.Error()})
+		return
+	}
+
+	writeJSON(w, http.StatusCreated, entry)
+}
+
 // Entries Router
 // handles /entries & /entries/{id}
 func EntriesRouter(w http.ResponseWriter, r *http.Request) {
@@ -55,7 +73,8 @@ func EntriesRouter(w http.ResponseWriter, r *http.Request) {
 		GetEntries(w, r)
 	case !isCollection && r.Method == http.MethodGet:
 		GetEntry(w, r)
-
+	case isCollection && r.Method == http.MethodPost:
+		CreateEntry(w, r)
 	}
 
 }
